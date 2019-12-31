@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "iostream": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "fstream": "c",
+        "__bit_reference": "c",
+        "algorithm": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "unordered_map": "c",
+        "__hash_table": "c",
+        "deque": "c",
+        "cmath": "c"
+    }
+}

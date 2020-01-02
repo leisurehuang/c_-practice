@@ -8,9 +8,10 @@
 using namespace std;
 
 FILE *fp;
-int planeCount = 0;
-int use = 0;
-int inf = 0;
+int planeCount = 0; //总共的航班个数
+int use = 0; //乘客个数
+int inf = 0; //输入的航班个数
+int account; //管理员账号
 
 struct plane
 {
@@ -28,7 +29,7 @@ struct people
 	int bill;	  //乘客订单
 	char name[10]; //姓名
 	char card[18]; //身份证号
-	int ticket;	//票数
+	int ticket;	//买的票数
 	int airID;	 //航班号
 
 } user[100];
@@ -37,9 +38,9 @@ void login();
 
 void search();
 
-void book();
+void book(); // 订票
 
-void back();
+void back(); // 退票
 
 void bill();
 
@@ -49,7 +50,7 @@ void main_menu();
 
 int deal();
 
-void admire();
+void admire(); //管理员账号页面
 
 void input();
 
@@ -75,6 +76,7 @@ void quicksort();
 
 int main()
 {
+
 	readData();
 	userData();
 	main_menu();
@@ -93,7 +95,7 @@ int readData() //读取文件
 		planeCount++;
 	}
 	fclose(fp);
-	return 0;
+	return 1;
 }
 
 int writeData() //写入文件
@@ -112,7 +114,6 @@ int writeData() //写入文件
 	return 0;
 }
 
-int account;
 
 int deal()
 {
@@ -140,7 +141,7 @@ int userData() //读取文件
 		use++;
 	}
 	fclose(fp);
-	return 0;
+	return 1;
 }
 
 int userWrite() //写入文件
@@ -447,11 +448,11 @@ void admire()
 	case 1:
 		input();
 		break;
-		//登录
+		//录入
 	case 2:
 		update();
 		break;
-		//注册
+		//更新
 	case 3:
 		passager();
 		//乘客信息
@@ -509,20 +510,12 @@ void input()
 
 void listOfPlanes()
 {
-	int cnt = 0;
-	string str;
-	ifstream
-		fin("plane.txt", ios::in);
-	if (!fin)
-	{
-		printf("The file is not exist!");
-	}
 	printf("航班ID 起降时间 起飞日期 起点 终点 余票 价格\n");
-	while (getline(fin, str))
-	{
-		cnt++;
-		cout << str << endl;
+	for (int i=0; i < planeCount; i++){
+		printf("%d %s %s %s %s %d %d\n", data[i].ID, data[i].time, data[i].data, data[i].start, data[i].end, data[i].ticketCount, data[i].price);
 	}
+
+
 	printf("\n\n");
 	if (account == 10086)
 	{
